@@ -8,7 +8,7 @@ export const GET = async (req: NextRequest) => {
     action: {
       type: "post",
     },
-    icon: "download",
+    icon: "filter",
     name: "Download Replies Addresses",
     aboutUrl: `${appURL()}/`,
     description:
