@@ -1,5 +1,5 @@
 import { NextRequest } from "next/server";
-import { appURL } from "../../../../../utils";
+import { appURL } from "../../../utils";
 import { frames } from "../../frames";
 import { ActionMetadata } from "frames.js";
 
@@ -10,7 +10,7 @@ export const GET = async (req: NextRequest) => {
     },
     icon: "download",
     name: "Download Replies Addresses",
-    aboutUrl: `${appURL()}/examples/new-api-cast-actions`,
+    aboutUrl: `${appURL()}/`,
     description:
       "Parse and download all the addresses in replies of cast as CSV",
   };
@@ -21,6 +21,6 @@ export const GET = async (req: NextRequest) => {
 export const POST = frames(async (ctx) => {
   return Response.json({
     type: "frame",
-    frameUrl: `${appURL()}/examples/new-api-cast-actions/frames/download-reply-addresses`,
+    frameUrl: `${appURL()}/frames/download-reply-addresses`,
   });
 });

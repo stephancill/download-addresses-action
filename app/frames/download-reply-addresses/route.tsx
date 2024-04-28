@@ -5,7 +5,7 @@ import {
   extractFirstEthereumAddress,
   getAddressesFromReplies,
   getCastReplies,
-} from "../../../../utils";
+} from "../../utils";
 import { kv } from "@vercel/kv";
 
 export const POST = frames(async (ctx) => {
@@ -54,7 +54,12 @@ export const POST = frames(async (ctx) => {
     }
 
     return {
-      image: <div tw="flex">Parsed {addresses.length} addresses</div>,
+      image: (
+        <div tw="flex flex-col">
+          <div tw="flex text-[48px]">Parsed {addresses.length} addresses</div>
+          <div tw="text-[32px] mt-5">by @stephancill</div>
+        </div>
+      ),
       buttons: [
         <Button
           action="link"

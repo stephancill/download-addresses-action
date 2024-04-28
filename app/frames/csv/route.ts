@@ -1,5 +1,5 @@
 import { NextRequest } from "next/server";
-import { getAddressesFromReplies, getCastReplies } from "../../../../utils";
+import { getAddressesFromReplies, getCastReplies } from "../../utils";
 import { kv } from "@vercel/kv";
 
 export async function GET(req: NextRequest) {

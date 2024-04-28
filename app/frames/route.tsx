@@ -3,38 +3,27 @@ import { Button } from "frames.js/next";
 import { frames } from "./frames";
 import { appURL } from "../utils";
 
-const frameHandler = frames(async (ctx) => {
-  const counter = ctx.message
-    ? ctx.searchParams.op === "+"
-      ? ctx.state.counter + 1
-      : ctx.state.counter - 1
-    : ctx.state.counter;
+function constructCastActionUrl(params: { url: string }): string {
+  // Construct the URL
+  const baseUrl = "https://warpcast.com/~/add-cast-action";
+  const urlParams = new URLSearchParams({
+    url: params.url,
+  });
+
+  return `${baseUrl}?${urlParams.toString()}`;
+}
+
+export const GET = frames(async (ctx) => {
+  const installActionUrl = constructCastActionUrl({
+    url: `${appURL()}//frames/actions/download-reply-addresses`,
+  });
 
   return {
-    image: (
-      <div tw="flex flex-col">
-        <div tw="flex">frames.js starter</div>
-        {ctx.message?.inputText && (
-          <div tw="flex">{`Input: ${ctx.message.inputText}`}</div>
-        )}
-        <div tw="flex">Counter {counter}</div>
-      </div>
-    ),
-    textInput: "Say something",
+    image: <div>Download Addresses in Replies Action</div>,
     buttons: [
-      <Button action="post" target={{ pathname: "/", query: { op: "+" } }}>
-        Increment
-      </Button>,
-      <Button action="post" target={{ pathname: "/", query: { op: "-" } }}>
-        Decrement
-      </Button>,
-      <Button action="link" target={appURL()}>
-        External
+      <Button action="link" target={installActionUrl}>
+        Install action
       </Button>,
     ],
-    state: { counter: counter },
   };
 });
-
-export const GET = frameHandler;
-export const POST = frameHandler;

@@ -1,18 +1,4 @@
-import { headers } from "next/headers";
 import { HUB_API_URL } from "./env";
-import { kv } from "@vercel/kv";
-
-export function currentURL(pathname: string): URL {
-  const headersList = headers();
-  const host = headersList.get("x-forwarded-host") || headersList.get("host");
-  const protocol = headersList.get("x-forwarded-proto") || "http";
-
-  try {
-    return new URL(pathname, `${protocol}://${host}`);
-  } catch (error) {
-    return new URL("http://localhost:3000");
-  }
-}
 
 export function appURL() {
   if (process.env.APP_URL) {

@@ -1,10 +1,6 @@
 import { createFrames } from "frames.js/next";
+import { appURL } from "../utils";
 
-type State = {
-  counter: number;
-};
-
-export const frames = createFrames<State>({
-  basePath: "/frames",
-  initialState: { counter: 0 },
+export const frames = createFrames({
+  baseUrl: `${appURL()}/frames`,
 });
