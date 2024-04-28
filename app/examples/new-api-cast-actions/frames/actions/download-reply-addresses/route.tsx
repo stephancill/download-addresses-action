@@ -8,10 +8,11 @@ export const GET = async (req: NextRequest) => {
     action: {
       type: "post",
     },
-    icon: "number",
+    icon: "download",
     name: "Download Replies Addresses",
     aboutUrl: `${appURL()}/examples/new-api-cast-actions`,
-    description: "Check the FID of the caster and returns a frame.",
+    description:
+      "Parse and download all the addresses in replies of cast as CSV",
   };
 
   return Response.json(actionMetadata);
