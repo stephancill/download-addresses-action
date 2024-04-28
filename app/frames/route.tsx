@@ -15,7 +15,7 @@ function constructCastActionUrl(params: { url: string }): string {
 
 export const GET = frames(async (ctx) => {
   const installActionUrl = constructCastActionUrl({
-    url: `${appURL()}//frames/actions/download-reply-addresses`,
+    url: `${appURL()}/frames/actions/download-reply-addresses`,
   });
 
   return {
